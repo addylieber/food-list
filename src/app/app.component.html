@@ -2,7 +2,7 @@
   <mat-toolbar color="primary">
     <span><mat-icon>home</mat-icon></span>
 
-    <span>Angular Material Starter</span>
+    <span>Food List</span>
 
     <button mat-icon-button [mat-menu-trigger-for]="menu">
       <mat-icon>more_vert</mat-icon>
@@ -15,9 +15,21 @@
   </mat-menu>
 
   <mat-card>
-    <mat-card-title>Example Card</mat-card-title>
+    <!-- <mat-card-title>Example Card</mat-card-title> -->
+    <mat-card-content>
+      <table style="width:100%">
+        <tr style="text-align: left">
+          <th>Name</th>
+          <th>Food Group</th>
+        </tr>
+        <tr *ngFor="let food of foodList">
+          <td>{{food.name}}</td>
+          <td>{{food.foodGroup}}</td>
+        </tr>
+      </table>
+    </mat-card-content>
     <mat-card-actions>
-      <button mat-raised-button color="primary" (click)="open()">Open Dialog</button>
+      <button mat-raised-button color="primary" (click)="addFood()">Add</button>
     </mat-card-actions>
   </mat-card>
 

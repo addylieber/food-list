@@ -10,7 +10,21 @@ import { EditDialogComponent } from './edit-dialog/edit-dialog.component';
 })
 export class AppComponent {
   title = 'angular-material-starter';
-
+  foodList = [
+    {
+      name: "cheese burger",
+      foodGroup: "meat"
+    },
+    {
+      name: "dragon fruit",
+      foodGroup: "fruit"
+    },
+    {
+      name: "milk",
+      foodGroup: "dairy"
+    }
+  ];
+  
   constructor(private dialog: MatDialog,
               private snackBar: MatSnackBar) {}
 
@@ -25,6 +39,13 @@ export class AppComponent {
           duration: 5000
         });
       }
+    });
+  }
+
+  addFood() {
+    this.foodList.push({
+      name: "spaghetti",
+      foodGroup: "grain"
     });
   }
 }
