@@ -1,12 +1,16 @@
-<h1 mat-dialog-title>Example Dialog</h1>
+<h1 mat-dialog-title>Add Your New Food </h1>
 <div mat-dialog-content>
-  <p>What's your name?</p>
+  <!-- <p>What's your name?</p> -->
   <mat-form-field>
     <mat-label>Name</mat-label>
-    <input matInput [(ngModel)]="name">
+    <input matInput [(ngModel)]="food.name">
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Food Group</mat-label>
+    <input matInput [(ngModel)]="food.foodGroup">
   </mat-form-field>
 </div>
 <div mat-dialog-actions>
   <button mat-button (click)="onCancel()">Cancel</button>
-  <button mat-raised-button [mat-dialog-close]="name" color="primary" cdkFocusInitial>Ok</button>
+  <button mat-raised-button (click)="onOk()" color="primary" cdkFocusInitial>Ok</button>
 </div>

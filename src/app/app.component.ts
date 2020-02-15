@@ -30,12 +30,12 @@ export class AppComponent {
 
   addFood() {
     const dialogRef = this.dialog.open(EditDialogComponent, {
-      width: '250px'
+      width: '300px'
     });
 
-    dialogRef.afterClosed().subscribe(name => {
-      if (name) {
-        this.snackBar.open(`Hello ${name}!`, undefined, {
+    dialogRef.afterClosed().subscribe(food => {
+      if (food) {
+        this.snackBar.open(`Hello ${food.name}!`, undefined, {
           duration: 5000
         });
       }

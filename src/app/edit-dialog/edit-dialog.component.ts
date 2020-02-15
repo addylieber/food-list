@@ -10,12 +10,18 @@ export class EditDialogComponent implements OnInit {
 
   constructor(
     public dialogRef: MatDialogRef<EditDialogComponent>,
-    @Inject(MAT_DIALOG_DATA) public name: string) { }
+    @Inject(MAT_DIALOG_DATA) public food: object) { 
+      this.food = this.food || {};
+    }
 
   ngOnInit(): void {
   }
 
   onCancel(): void {
     this.dialogRef.close();
+  
+  }
+  onOk(): void {
+    this.dialogRef.close(this.food);
   }
 }
