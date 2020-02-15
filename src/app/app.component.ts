@@ -35,8 +35,10 @@ export class AppComponent {
 
     dialogRef.afterClosed().subscribe(food => {
       if (food) {
-        this.snackBar.open(`Hello ${food.name}!`, undefined, {
-          duration: 5000
+        this.foodList.push(food);
+        this.snackBar.open(`Added ${food.name}!`, undefined, {
+          duration: 5000,
+          verticalPosition:"top"
         });
       }
     });
