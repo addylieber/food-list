@@ -24,11 +24,11 @@ export class AppComponent {
       foodGroup: "dairy"
     }
   ];
-  
+
   constructor(private dialog: MatDialog,
               private snackBar: MatSnackBar) {}
 
-  open() {
+  addFood() {
     const dialogRef = this.dialog.open(EditDialogComponent, {
       width: '250px'
     });
@@ -42,10 +42,10 @@ export class AppComponent {
     });
   }
 
-  addFood() {
-    this.foodList.push({
-      name: "spaghetti",
-      foodGroup: "grain"
-    });
-  }
+  // addFood() {
+  //   this.foodList.push({
+  //     name: "spaghetti",
+  //     foodGroup: "grain"
+  //   });
+  // }
 }
