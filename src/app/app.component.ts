@@ -69,7 +69,7 @@ export class AppComponent {
   deleteFood(index) {
     let food = this.foodList.splice(index,1)[0];
     AppComponent.saveFoodList(this.foodList);
-    this.snackBar.open(`Deleted ${food.name}!`, undefined, {
+    this.snackBar.open(`Deleted ${food.name}`, undefined, {
           duration: 5000,
           verticalPosition:"top"
         });
