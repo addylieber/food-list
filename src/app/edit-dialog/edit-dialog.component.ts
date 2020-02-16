@@ -8,9 +8,12 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 })
 export class EditDialogComponent implements OnInit {
 
+  private title: string;
+
   constructor(
     public dialogRef: MatDialogRef<EditDialogComponent>,
-    @Inject(MAT_DIALOG_DATA) public food: object) { 
+    @Inject(MAT_DIALOG_DATA) public food: object) {
+      this.title = this.food ? "Edit Your Food" : "Add Your New Food";
       this.food = this.food || {};
     }
 

@@ -21,10 +21,16 @@
         <tr style="text-align: left">
           <th>Name</th>
           <th>Food Group</th>
+          <th></th>
         </tr>
         <tr *ngFor="let food of foodList">
           <td>{{food.name}}</td>
           <td>{{food.foodGroup}}</td>
+          <td>
+            <button mat-icon-button (click)="editFood(food)">
+              <mat-icon>edit</mat-icon>
+            </button>
+          </td>
         </tr>
       </table>
     </mat-card-content>

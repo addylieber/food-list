@@ -44,6 +44,23 @@ export class AppComponent {
     });
   }
 
+  editFood(food) {
+   const dialogRef = this.dialog.open(EditDialogComponent, {
+      width: '300px',
+      data: Object.assign({}, food)
+    });
+
+    dialogRef.afterClosed().subscribe(updatedFood => {
+      if (updatedFood) {
+        Object.assign(food,updatedFood);
+        this.snackBar.open(`Updated ${food.name}!`, undefined, {
+          duration: 5000,
+          verticalPosition:"top"
+        });
+      }
+    }); 
+  }
+
   // addFood() {
   //   this.foodList.push({
   //     name: "spaghetti",
