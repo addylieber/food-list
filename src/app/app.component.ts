@@ -9,24 +9,27 @@ import { EditDialogComponent } from './edit-dialog/edit-dialog.component';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'angular-material-starter';
-  foodList = [
-    {
-      name: "cheese burger",
-      foodGroup: "meat"
-    },
-    {
-      name: "dragon fruit",
-      foodGroup: "fruit"
-    },
-    {
-      name: "milk",
-      foodGroup: "dairy"
-    }
-  ];
+  private title = 'angular-material-starter';
+  private foodList;
+  // foodList = [
+  //   {
+  //     name: "cheese burger",
+  //     foodGroup: "meat"
+  //   },
+  //   {
+  //     name: "dragon fruit",
+  //     foodGroup: "fruit"
+  //   },
+  //   {
+  //     name: "milk",
+  //     foodGroup: "dairy"
+  //   }
+  // ];
 
   constructor(private dialog: MatDialog,
-              private snackBar: MatSnackBar) {}
+              private snackBar: MatSnackBar) {
+    this.foodList = AppComponent.getFoodList();
+  }
 
   addFood() {
     const dialogRef = this.dialog.open(EditDialogComponent, {
@@ -36,6 +39,7 @@ export class AppComponent {
     dialogRef.afterClosed().subscribe(food => {
       if (food) {
         this.foodList.push(food);
+        AppComponent.saveFoodList(this.foodList);
         this.snackBar.open(`Added ${food.name}!`, undefined, {
           duration: 5000,
           verticalPosition:"top"
@@ -45,7 +49,7 @@ export class AppComponent {
   }
 
   editFood(food) {
-   const dialogRef = this.dialog.open(EditDialogComponent, {
+    const dialogRef = this.dialog.open(EditDialogComponent, {
       width: '300px',
       data: Object.assign({}, food)
     });
@@ -53,12 +57,31 @@ export class AppComponent {
     dialogRef.afterClosed().subscribe(updatedFood => {
       if (updatedFood) {
         Object.assign(food,updatedFood);
+        AppComponent.saveFoodList(this.foodList);
         this.snackBar.open(`Updated ${food.name}!`, undefined, {
           duration: 5000,
           verticalPosition:"top"
         });
       }
     }); 
+  }
+
+  deleteFood(index) {
+    let food = this.foodList.splice(index,1)[0];
+    AppComponent.saveFoodList(this.foodList);
+    this.snackBar.open(`Deleted ${food.name}!`, undefined, {
+          duration: 5000,
+          verticalPosition:"top"
+        });
+  }
+
+  static getFoodList() {
+    let foodListString = localStorage.getItem('foodList');
+    return foodListString ? JSON.parse(foodListString) : [];
+  }
+
+  static saveFoodList(foodList) {
+    localStorage.setItem('foodList', JSON.stringify(foodList));
   }
 
   // addFood() {

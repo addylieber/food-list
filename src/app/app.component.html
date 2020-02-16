@@ -23,12 +23,15 @@
           <th>Food Group</th>
           <th></th>
         </tr>
-        <tr *ngFor="let food of foodList">
+        <tr *ngFor="let food of foodList; index as index">
           <td>{{food.name}}</td>
           <td>{{food.foodGroup}}</td>
           <td>
             <button mat-icon-button (click)="editFood(food)">
               <mat-icon>edit</mat-icon>
+            </button>
+            <button mat-icon-button (click)="deleteFood(index)">
+              <mat-icon>delete</mat-icon>
             </button>
           </td>
         </tr>
