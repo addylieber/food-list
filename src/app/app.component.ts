@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { MatTable } from '@angular/material/table';
 import { EditDialogComponent } from './edit-dialog/edit-dialog.component';
 
 @Component({
@@ -11,20 +12,8 @@ import { EditDialogComponent } from './edit-dialog/edit-dialog.component';
 export class AppComponent {
   private title = 'angular-material-starter';
   private foodList;
-  // foodList = [
-  //   {
-  //     name: "cheese burger",
-  //     foodGroup: "meat"
-  //   },
-  //   {
-  //     name: "dragon fruit",
-  //     foodGroup: "fruit"
-  //   },
-  //   {
-  //     name: "milk",
-  //     foodGroup: "dairy"
-  //   }
-  // ];
+  displayedColumns: string[] = ['name', 'foodGroup', 'calories', 'actions'];
+  @ViewChild(MatTable) table: MatTable<any>;
 
   constructor(private dialog: MatDialog,
               private snackBar: MatSnackBar) {
@@ -39,6 +28,7 @@ export class AppComponent {
     dialogRef.afterClosed().subscribe(food => {
       if (food) {
         this.foodList.push(food);
+        this.table.renderRows();
         AppComponent.saveFoodList(this.foodList);
         this.snackBar.open(`Added ${food.name}!`, undefined, {
           duration: 5000,
@@ -68,6 +58,7 @@ export class AppComponent {
 
   deleteFood(index) {
     let food = this.foodList.splice(index,1)[0];
+    this.table.renderRows();
     AppComponent.saveFoodList(this.foodList);
     this.snackBar.open(`Deleted ${food.name}`, undefined, {
           duration: 5000,

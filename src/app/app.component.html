@@ -17,8 +17,8 @@
   <mat-card>
     <!-- <mat-card-title>Example Card</mat-card-title> -->
     <mat-card-content>
-      <table style="width:100%">
-        <tr style="text-align: left">
+      <table>
+        <tr>
           <th>Name</th>
           <th>Food Group</th>
           <th>Calories</th>
@@ -28,9 +28,9 @@
           <td>{{food.name}}</td>
           <td>{{food.foodGroup}}</td>
           <td>{{food.calories}}</td>
-          <td>
-         <button mat-icon-button (click)="editFood(food)">
-        <mat-icon>edit</mat-icon>
+          <td class="actions-column">
+            <button mat-icon-button (click)="editFood(food)">
+              <mat-icon>edit</mat-icon>
             </button>
             <button mat-icon-button (click)="deleteFood(index)">
               <mat-icon>delete</mat-icon>

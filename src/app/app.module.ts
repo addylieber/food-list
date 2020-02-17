@@ -14,6 +14,7 @@ import { MatMenuModule } from "@angular/material/menu";
 import { MatCardModule } from "@angular/material/card";
 import { MatInputModule } from "@angular/material/input";
 import { MatSnackBarModule } from "@angular/material/snack-bar";
+import { MatTableModule } from "@angular/material/table";
 
 // app
 import { EditDialogComponent } from './edit-dialog/edit-dialog.component';
@@ -34,7 +35,8 @@ import { EditDialogComponent } from './edit-dialog/edit-dialog.component';
     MatMenuModule,
     MatCardModule,
     MatInputModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    MatTableModule
   ],
   entryComponents: [
     EditDialogComponent
