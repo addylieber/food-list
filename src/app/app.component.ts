@@ -66,6 +66,16 @@ export class AppComponent {
         });
   }
 
+  getTotalCalories() {
+    let total = 0;
+    this.foodList.forEach(food => {
+      if (food.calories){
+        total = total + food.calories;
+      }
+    });
+    return total;
+  }
+
   static getFoodList() {
     let foodListString = localStorage.getItem('foodList');
     return foodListString ? JSON.parse(foodListString) : [];
